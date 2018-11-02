@@ -27,6 +27,15 @@ export class ProdukService {
       );
   }
 
+
+  addProduk(produk): Observable<Produk> {
+    return this.http.post<Produk>(this.baseUrl, produk, httpOptions).pipe(
+      tap((produk: Produk) => console.log(`added produk w/ id=${produk._id}`)),
+      catchError(this.handleError<Produk>('addProduk'))
+    );
+  }
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

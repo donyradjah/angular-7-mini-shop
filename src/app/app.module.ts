@@ -13,8 +13,10 @@ import { AppRouteModule } from './app-route/app-route.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { from } from 'rxjs';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +30,14 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent
   ],
   imports: [
+    NgSelectModule,
     BrowserModule,
     AppRouteModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot() 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

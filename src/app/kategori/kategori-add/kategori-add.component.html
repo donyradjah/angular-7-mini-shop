@@ -5,6 +5,9 @@
 </div>
 
 <div class="table-responsive">
+  <div *ngIf="isLoadingResults" class="animationload">
+    <div class="osahanloading"></div>
+  </div>
   <form [formGroup]="kategoriForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="nama_kategori">Nama Kategori : </label>
@@ -19,10 +22,8 @@
 
       </div>
     </div>
-    {{submitted}}
-    {{!kategoriForm.invalid && !submitted}}
     <div class="form-group">
-      <button class="btn btn-primary m-1" type="submit" [disabled]="!kategoriForm.valid && !submitted">Simpan</button>
+      <button class="btn btn-primary m-1" type="submit" [disabled]="kategoriForm.invalid && submitted">Simpan</button>
       <a routerLink="/kategori" class="btn btn-danger m-1">Kembali</a>
     </div>
   </form>

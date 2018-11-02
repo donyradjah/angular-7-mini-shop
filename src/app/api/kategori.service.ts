@@ -35,6 +35,28 @@ export class KategoriService {
     );
   }
 
+  editKategori(kategori_id, kategori): Observable<Kategori> {
+    return this.http.put<Kategori>(this.baseUrl + "/" + kategori_id, kategori, httpOptions).pipe(
+      tap((kategori: Kategori) => console.log(`edit kategori w/ id=${kategori._id}`)),
+      catchError(this.handleError<Kategori>('editKategori'))
+    );
+  }
+
+
+  detailKategori(kategori_id): Observable<Kategori> {
+    return this.http.get<Kategori>(this.baseUrl + "/" + kategori_id).pipe(
+      tap((kategori: Kategori) => console.log(`detail kategori w/ id=${kategori._id}`)),
+      catchError(this.handleError<Kategori>('detailKategori'))
+    );
+  }
+
+  deleteKategori(kategori_id): Observable<Kategori> {
+    return this.http.delete<Kategori>(this.baseUrl + "/" + kategori_id).pipe(
+      tap((kategori: Kategori) => console.log(`detail kategori w/ id=${kategori._id}`)),
+      catchError(this.handleError<Kategori>('detailKategori'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
