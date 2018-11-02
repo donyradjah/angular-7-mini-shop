@@ -58,25 +58,26 @@ export class ProdukAddComponent implements OnInit {
     if (this.produkForm.invalid) {
       return;
     }
-    this.produkService.addProduk(this.produk)
-      .subscribe(res => {
-        console.log(res);
-        this.produkForm.reset();
-        this.submitted = true;
-        this.isLoadingResults = false;
-        this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
-          closeButton: true,
-          timeOut: 3000
+  
+      this.submitted = true;
+      this.produkService.addProduk(this.produk)
+        .subscribe(res => {
+          console.log(res);
+          this.produkForm.reset();
+          this.submitted = true;
+          this.isLoadingResults = false;
+          this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
+            closeButton: true,
+            timeOut: 3000
+          });
+        }, err => {
+          this.submitted = true;
+          this.isLoadingResults = false;
+          this.toastr.error('Data Gagal Di Simpan!', 'Pesan', {
+            closeButton: true,
+            timeOut: 3000
+          });
         });
-      }, err => {
-        this.submitted = true;
-        this.isLoadingResults = false;
-        this.toastr.error('Data Gagal Di Simpan!', 'Pesan', {
-          closeButton: true,
-          timeOut: 3000
-        });
-      });
-
   }
 
 }

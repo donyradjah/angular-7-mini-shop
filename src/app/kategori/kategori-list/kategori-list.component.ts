@@ -23,9 +23,11 @@ export class KategoriListComponent implements OnInit {
   ngOnInit() {
     this.kategoriService.getKategoris()
       .subscribe(res => {
-        this.kategoris = res;
         console.log(res);
-        this.isLoadingResults = false;
+        setTimeout(() => {
+          this.isLoadingResults = false;
+          this.kategoris = res;
+        }, 1000);
         // this.toastr.success('Hello world!', 'Toastr fun!',{
         //   closeButton:true,
         //   timeOut:3000
@@ -47,9 +49,11 @@ export class KategoriListComponent implements OnInit {
           });
           this.kategoriService.getKategoris()
             .subscribe(res => {
-              this.kategoris = res;
               console.log(res);
-              this.isLoadingResults = false;
+              setTimeout(() => {
+                this.isLoadingResults = false;
+                this.kategoris = res;
+              }, 1000);
               // this.toastr.success('Hello world!', 'Toastr fun!',{
               //   closeButton:true,
               //   timeOut:3000

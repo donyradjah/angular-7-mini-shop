@@ -5,8 +5,8 @@
 </div>
 
 <div class="table-responsive">
-  <div *ngIf="isLoadingResults" class="animationload">
-    <div class="osahanloading"></div>
+  <div *ngIf="isLoadingResults" class="loader">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
   </div>
   <form [formGroup]="kategoriForm" (ngSubmit)="onSubmit()">
     <div class="form-group">

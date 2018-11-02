@@ -1,17 +1,19 @@
 <!-- NAV BAR -->
 <layout-navbar></layout-navbar>
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
 
-        <!-- {{--SIDEBAR DISINI--}} -->
-        <layout-sidebar></layout-sidebar>
-        <!-- {{--SIDEBAR DISINI--}} -->
+    <!-- {{--SIDEBAR DISINI--}} -->
+    <layout-sidebar></layout-sidebar>
+    <!-- {{--SIDEBAR DISINI--}} -->
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            
-            <!-- {{--CONTENT--}} -->
-            <router-outlet></router-outlet>
-            <!-- {{--CONTENT--}} -->
-        </main>
-    </div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div [hidden]="!loading" class="loader">
+        <mat-progress-bar mode="buffer"></mat-progress-bar>
+      </div>
+      <!-- {{--CONTENT--}} -->
+      <router-outlet></router-outlet>
+      <!-- {{--CONTENT--}} -->
+    </main>
+  </div>
 </div>

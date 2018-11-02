@@ -37,16 +37,21 @@ export class KategoriAddComponent implements OnInit {
     if (this.kategoriForm.invalid) {
       return;
     }
+    this.submitted = true;
+
     this.kategoriService.addKategori(this.kategori)
       .subscribe(res => {
         console.log(res);
         this.kategoriForm.reset();
-        this.submitted = true;
-        this.isLoadingResults = false;
-        this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
-          closeButton: true,
-          timeOut: 3000
-        });
+        setTimeout(() => {
+          this.submitted = true;
+          this.isLoadingResults = false;
+          this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
+            closeButton: true,
+            timeOut: 3000
+          });
+        }, 1000);
+
       }, err => {
         this.submitted = true;
         this.isLoadingResults = false;
@@ -55,6 +60,7 @@ export class KategoriAddComponent implements OnInit {
           timeOut: 3000
         });
       });
+
 
 
   }
