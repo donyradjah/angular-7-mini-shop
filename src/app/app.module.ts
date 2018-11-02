@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { KategoriListComponent } from './kategori/kategori-list/kategori-list.component';
 import { KategoriAddComponent } from './kategori/kategori-add/kategori-add.component';
@@ -11,7 +12,9 @@ import { ProdukEditComponent } from './produk/produk-edit/produk-edit.component'
 import { AppRouteModule } from './app-route/app-route.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-
+import { from } from 'rxjs';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,12 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
   ],
   imports: [
     BrowserModule,
-    AppRouteModule
+    AppRouteModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot() 
   ],
   providers: [],
   bootstrap: [AppComponent]

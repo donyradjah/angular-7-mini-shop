@@ -1,3 +1,29 @@
-<div class="jumbotron">
-  <h1>Kategori Create</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <!-- {{--TITLE--}} -->
+  <h1 class="h2">{{title}}</h1>
+  <!-- {{--TITLE--}} -->
+</div>
+
+<div class="table-responsive">
+  <form [formGroup]="kategoriForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nama_kategori">Nama Kategori : </label>
+      <input type="text" required class="form-control mb-2" [(ngModel)]="kategori.nama_kategori" id="nama_kategori"
+        name="nama_kategori" formControlName="nama_kategori" />
+
+      <div *ngIf="form.nama_kategori.invalid && (form.nama_kategori.dirty || form.nama_kategori.touched)" class="alert alert-danger">
+
+        <div *ngIf="form.nama_kategori.errors.required">
+          Nama Kategori Harus Di Isi.
+        </div>
+
+      </div>
+    </div>
+    {{submitted}}
+    {{!kategoriForm.invalid && !submitted}}
+    <div class="form-group">
+      <button class="btn btn-primary m-1" type="submit" [disabled]="!kategoriForm.valid && !submitted">Simpan</button>
+      <a routerLink="/kategori" class="btn btn-danger m-1">Kembali</a>
+    </div>
+  </form>
 </div>
