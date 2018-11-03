@@ -7,3 +7,5 @@
 @import '~ngx-toastr/toastr.css';
 /* css ng select */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+/* Material Theme */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
