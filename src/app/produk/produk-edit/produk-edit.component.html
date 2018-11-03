@@ -1,3 +1,42 @@
-<p>
-  produk-edit works!
-</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <!-- {{--TITLE--}} -->
+  <h1 class="h2">{{title}}</h1>
+  <!-- {{--TITLE--}} -->
+</div>
+
+<div *ngIf="isLoadingResults" class="animationload">
+  <div class="osahanloading"></div>
+</div>
+<form [formGroup]="produkForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nama_produk">Nama Produk : </label>
+    <input type="text" required class="form-control mb-2" [(ngModel)]="produk.nama_produk" id="nama_produk" name="nama_produk"
+      formControlName="nama_produk" />
+
+    <div *ngIf="form.nama_produk.invalid && (form.nama_produk.dirty || form.nama_produk.touched)" class="alert alert-danger">
+
+      <div *ngIf="form.nama_produk.errors.required">
+        Nama Produk Harus Di Isi.
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group ">
+    <label for="nama_produk">Kategori : </label>
+    <ng-select [items]="kategoris" bindLabel="nama_kategori" bindValue="_id" placeholder="Select value" [(ngModel)]="produk.kategori_id"
+      formControlName="kategori_id">
+    </ng-select>
+
+    <div *ngIf="form.kategori_id.invalid && (form.kategori_id.dirty || form.kategori_id.touched)" class="alert alert-danger  mt-2">
+
+      <div *ngIf="form.kategori_id.errors.required">
+        Kategori Harus Di Pilih
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary m-1" type="submit" [disabled]="produkForm.invalid && submitted">Simpan</button>
+    <a routerLink="/produk" class="btn btn-danger m-1">Kembali</a>
+  </div>
+</form>

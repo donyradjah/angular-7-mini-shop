@@ -35,6 +35,28 @@ export class ProdukService {
     );
   }
 
+  editProduk(produk_id, produk): Observable<Produk> {
+    return this.http.put<Produk>(this.baseUrl + "/" + produk_id, produk, httpOptions).pipe(
+      tap((produk: Produk) => console.log(`edit produk w/ id=${produk._id}`)),
+      catchError(this.handleError<Produk>('editProduk'))
+    );
+  }
+
+
+  detailProduk(produk_id): Observable<Produk> {
+    return this.http.get<Produk>(this.baseUrl + "/" + produk_id).pipe(
+      tap((produk: Produk) => console.log(`detail produk w/ id=${produk._id}`)),
+      catchError(this.handleError<Produk>('detailProduk'))
+    );
+  }
+
+  deleteProduk(produk_id): Observable<Produk> {
+    return this.http.delete<Produk>(this.baseUrl + "/" + produk_id).pipe(
+      tap((produk: Produk) => console.log(`detail produk w/ id=${produk._id}`)),
+      catchError(this.handleError<Produk>('detailProduk'))
+    );
+  }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
