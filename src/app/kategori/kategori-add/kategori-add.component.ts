@@ -43,14 +43,12 @@ export class KategoriAddComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.kategoriForm.reset();
-        setTimeout(() => {
-          this.submitted = true;
-          this.isLoadingResults = false;
-          this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
-            closeButton: true,
-            timeOut: 3000
-          });
-        }, 1000);
+        this.submitted = true;
+        this.isLoadingResults = false;
+        this.toastr.success('Data Berhasil Di Simpan!', 'Pesan', {
+          closeButton: true,
+          timeOut: 3000
+        });
 
       }, err => {
         this.submitted = true;

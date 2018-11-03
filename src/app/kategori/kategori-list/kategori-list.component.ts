@@ -24,14 +24,8 @@ export class KategoriListComponent implements OnInit {
     this.kategoriService.getKategoris()
       .subscribe(res => {
         console.log(res);
-        setTimeout(() => {
-          this.isLoadingResults = false;
-          this.kategoris = res;
-        }, 1000);
-        // this.toastr.success('Hello world!', 'Toastr fun!',{
-        //   closeButton:true,
-        //   timeOut:3000
-        // });
+        this.isLoadingResults = false;
+        this.kategoris = res;
       }, err => {
         // console.log(err);
       });
@@ -50,14 +44,8 @@ export class KategoriListComponent implements OnInit {
           this.kategoriService.getKategoris()
             .subscribe(res => {
               console.log(res);
-              setTimeout(() => {
-                this.isLoadingResults = false;
-                this.kategoris = res;
-              }, 1000);
-              // this.toastr.success('Hello world!', 'Toastr fun!',{
-              //   closeButton:true,
-              //   timeOut:3000
-              // });
+              this.isLoadingResults = false;
+              this.kategoris = res;
             }, err => {
               // console.log(err);
             });
@@ -66,9 +54,7 @@ export class KategoriListComponent implements OnInit {
             closeButton: true,
             timeOut: 3000
           });
-          setTimeout(() => {
-            this.router.navigate(['/kategori']);
-          }, 1000);
+          this.router.navigate(['/kategori']);
         });
     } else {
       this.isLoadingResults = false;

@@ -77,9 +77,7 @@ export class KategoriEditComponent implements OnInit {
               closeButton: true,
               timeOut: 3000
             });
-            setTimeout(() => {
-              this.router.navigate(['/kategori']);
-            }, 1000);
+            this.router.navigate(['/kategori']);
           });
       }, err => {
         this.submitted = true;
